@@ -103,6 +103,25 @@
             text-decoration: none;
         }
     </style>
+    <script>
+        // JavaScript to show and hide sections
+        function showSection(sectionId) {
+            // Hide all sections
+            var sections = document.querySelectorAll('section');
+            sections.forEach(function(section) {
+                section.style.display = 'none';
+            });
+
+            // Show the selected section
+            var selectedSection = document.getElementById(sectionId);
+            selectedSection.style.display = 'block';
+        }
+
+        // Initial page load: show the home section
+        window.onload = function() {
+            showSection('home');
+        };
+    </script>
 </head>
 <body>
 
@@ -110,11 +129,11 @@
     <h1>MI8996_Project</h1>
     <nav>
         <ul>
-            <li><a href="#home">首页</a></li>
-            <li><a href="#downloads">ROM下载</a></li>
-            <li><a href="#guide">安装教程</a></li>
-            <li><a href="#faq">常见问题</a></li>
-            <li><a href="#contributors">贡献者</a></li>
+            <li><a href="javascript:void(0);" onclick="showSection('home')">首页</a></li>
+            <li><a href="javascript:void(0);" onclick="showSection('downloads')">ROM下载</a></li>
+            <li><a href="javascript:void(0);" onclick="showSection('guide')">安装教程</a></li>
+            <li><a href="javascript:void(0);" onclick="showSection('faq')">常见问题</a></li>
+            <li><a href="javascript:void(0);" onclick="showSection('contributors')">贡献者</a></li>
         </ul>
     </nav>
 </header>
@@ -125,19 +144,32 @@
     <p><strong>支持机型：</strong>小米5、小米5s、小米5sPlus、小米Note2、小米Mix</p>
 </section>
 
-<section id="downloads">
+<section id="downloads" style="display:none;">
     <h2>ROM下载</h2>
     <p>选择你的设备型号并下载相应的ROM：</p>
     <ul>
-        <li><a href="#">小米5 ROM</a> - </li>
-        <li><a href="#">小米5s ROM</a> - </li>
-        <li><a href="#">小米5sPlus ROM</a> - </li>
-        <li><a href="#">小米Note2 ROM</a> - </li>
-        <li><a href="#">小米Mix ROM</a> - </li>
+        <li><a href="javascript:void(0);" onclick="showSection('xiaomi5-rom')">小米5 ROM</a></li>
+        <li><a href="#">小米5s ROM</a></li>
+        <li><a href="#">小米5sPlus ROM</a></li>
+        <li><a href="#">小米Note2 ROM</a></li>
+        <li><a href="#">小米Mix ROM</a></li>
     </ul>
 </section>
 
-<section id="guide">
+<section id="xiaomi5-rom" style="display:none;">
+    <h2>小米5 ROM下载</h2>
+    <ul>
+        <li><a href="#">MIUI14_Android13_14.0.28</a></li>
+        <li><a href="#">HyperOS_Android13_1.0.8.0</a></li>
+        <li><a href="#">HyperOS_Android13_1.0.9.0</a></li>
+        <li><a href="#">HyperOS_Android13_1.0.10.0</a></li>
+        <li><a href="#">HyperOS_Android14_1.0.13.0_Full</a></li>
+        <li><a href="#">HyperOS_Android14_1.0.1.0_Lite</a></li>
+        <li><a href="#">Flyme_Android14_11.0.6.0</a></li>
+    </ul>
+</section>
+
+<section id="guide" style="display:none;">
     <h2>安装教程</h2>
     <p>以下是安装ROM的一般步骤：</p>
     <ol>
@@ -151,13 +183,13 @@
     <p>有关更详细的步骤和注意事项，请查看我们的<a href="#">详细教程</a>。</p>
 </section>
 
-<section id="faq">
+<section id="faq" style="display:none;">
     <h2>常见问题 (FAQ)</h2>
     <h3>Q: 安装ROM后会丢失数据吗？</h3>
     <p>A: 是的，刷ROM过程可能会清除数据。建议提前备份重要文件。</p>
 </section>
 
-<section id="contributors">
+<section id="contributors" style="display:none;">
     <h2>贡献者</h2>
     <p>感谢以下开发者对本项目的贡献：</p>
     <ul>
