@@ -10,7 +10,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            background-color: #f4f7fc;
         }
 
         header {
@@ -30,28 +30,26 @@
             padding: 0;
             display: flex;
             justify-content: center;
-            margin: 0;
+            margin-top: 10px;
         }
 
         nav ul li {
-            margin: 0 15px;
+            margin: 0 20px;
         }
 
         nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: bold;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            transition: color 0.3s;
         }
 
         nav ul li a:hover {
-            background-color: #ffcc00;
+            color: #ffcc00;
         }
 
         section {
-            padding: 30px 20px;
+            padding: 40px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -60,7 +58,6 @@
             font-size: 2em;
             color: #333;
             margin-bottom: 20px;
-            text-align: center;
         }
 
         section p, section ul, section ol {
@@ -73,7 +70,11 @@
             padding-left: 20px;
         }
 
-        section li {
+        section ol {
+            padding-left: 20px;
+        }
+
+        section ul li, section ol li {
             margin-bottom: 10px;
         }
 
@@ -87,85 +88,184 @@
             color: #ffcc00;
         }
 
-        .timer {
+        footer {
+            background-color: #222;
+            color: white;
             text-align: center;
-            margin-top: 20px;
-            font-size: 1.2em;
-            color: #333;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
         }
     </style>
     <script>
-        // JavaScript for section switching
+        // JavaScript to show and hide sections
         function showSection(sectionId) {
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => section.style.display = 'none');
-            document.getElementById(sectionId).style.display = 'block';
+            // Hide all sections
+            var sections = document.querySelectorAll('section');
+            sections.forEach(function(section) {
+                section.style.display = 'none';
+            });
+
+            // Show the selected section
+            var selectedSection = document.getElementById(sectionId);
+            selectedSection.style.display = 'block';
         }
 
-        // JavaScript for the timer
-        function updateTimer() {
-            const startDate = new Date('2025-01-05T00:00:00');
-            const today = new Date();
-            const differenceInTime = today - startDate;
-            const differenceInDays = Math.floor(differenceInTime / (1000 * 60 * 60 * 24));
-            document.getElementById('timer').textContent = `本站已存活 ${differenceInDays} 天`;
-        }
-
-        // Initialize page and timer
-        window.onload = function () {
+        // Initial page load: show the home section
+        window.onload = function() {
             showSection('home');
-            updateTimer();
         };
     </script>
 </head>
 <body>
+
 <header>
     <h1>MI8996_Project</h1>
     <nav>
         <ul>
             <li><a href="javascript:void(0);" onclick="showSection('home')">首页</a></li>
             <li><a href="javascript:void(0);" onclick="showSection('downloads')">Roms</a></li>
+            <li><a href="javascript:void(0);" onclick="showSection('guide')">安装教程</a></li>
             <li><a href="javascript:void(0);" onclick="showSection('faq')">常见问题</a></li>
+            <li><a href="javascript:void(0);" onclick="showSection('contributors')">贡献者</a></li>
             <li><a href="javascript:void(0);" onclick="showSection('join-qq-group')">加入QQ群</a></li>
-            <li><a href="javascript:void(0);" onclick="showSection('legal')">法律声明</a></li>
         </ul>
     </nav>
 </header>
 
+
 <section id="home">
     <h2>项目简介</h2>
-    <p>欢迎来到MI8996 ROM项目！本项目提供针对搭载MSM8996芯片的小米手机的刷机包。</p>
-    <p><strong>支持机型：</strong>小米5、小米5s、小米5sPlus、小米Note2、小米Mix。</p>
+    <p>欢迎来到MI8996 ROM项目！本项目旨在提供针对所有搭载MSM8996芯片的小米手机的ROM，</p>
+    <p><strong>支持机型：</strong>小米5、小米5s、小米5sPlus、小米Note2、小米Mix</p>
+    <p>ROM请<strong>加入QQ群</strong>后下载，本网站下载渠道暂未开通</p>
+    <!-- 添加计时器 -->
     <div class="timer" id="timer"></div>
 </section>
 
+<script>
+    // JavaScript for the timer
+    function updateTimer() {
+        const startDate = new Date('2025-01-05T00:00:00'); // 起始日期
+        const today = new Date();
+        const differenceInTime = today - startDate; // 计算时间差
+        const differenceInDays = Math.floor(differenceInTime / (1000 * 60 * 60 * 24)); // 转换为天数
+        document.getElementById('timer').textContent = `本站已存活 ${differenceInDays} 天`;
+    }
+
+    // 初始化计时器
+    updateTimer();
+</script>
+
+<style>
+    /* 美化计时器样式 */
+    .timer {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 1.2em;
+        color: #333;
+    }
+</style>
+
+
 <section id="downloads" style="display:none;">
-    <h2>ROM 下载</h2>
+    <h2>Roms</h2>
+    <p>选择你的设备型号并查看相应的ROM信息：</p>
     <ul>
-        <li><a href="xiaomi5_rom_update_log.html">小米5 ROM 更新日志</a></li>
-        <li><a href="xiaomi5s_rom_update_log.html">小米5s ROM 更新日志</a></li>
-        <!-- Add other device links similarly -->
+        <li><a href="javascript:void(0);" onclick="showSection('xiaomi5-rom')">小米5 ROM</a></li>
+        <li><a href="javascript:void(0);" onclick="showSection('xiaomi5s-rom')">小米5s ROM</a></li>
+        <li><a href="#">小米5sPlus ROM</a></li>
+        <li><a href="#">小米Note2 ROM</a></li>
+        <li><a href="#">小米Mix ROM</a></li>
     </ul>
+</section>
+<section id="xiaomi5-rom" style="display:none;">
+    <h2>ROM信息</h2>
+    <p>选择你的设备型号并查看ROM信息：</p>
+    <ul>
+        <li><a href="xiaomi5_rom_update_log.html">Mi5_MIUI14</a> - MIUI14_Android13_14.0.28</li>
+        <li><a href="xiaomi5_rom_update_log.html">Mi5_HyperOS</a> - HyperOS_Android13_1.0.8.0</li>
+        <li><a href="xiaomi5_rom_update_log.html">Mi5_HyperOS</a> - HyperOS_Android13_1.0.9.0</li>
+        <li><a href="xiaomi5_rom_update_log.html">Mi5_HyperOS</a> - HyperOS_Android13_1.0.10.0</li>
+        <li><a href="xiaomi5_rom_update_log.html">Mi5_HyperOS</a> - HyperOS_Android14_1.0.13.0_Full</li>
+        <li><a href="xiaomi5_rom_update_log.html">Mi5_HyperOS</a> - HyperOS_Android14_1.0.1.0_Lite</li>
+        <li><a href="xiaomi5_rom_update_log.html">Mi5_Flyme AiOS</a> - Flyme_Android14_11.0.6.0</li>
+    </ul>
+</section>
+<section id="xiaomi5s-rom" style="display:none;">
+    <h2>ROM信息</h2>
+    <p>选择你的设备型号并查看ROM信息：</p>
+    <ul>
+        <li><a href="Xiaomi5s_update_log.html">Mi5s_HyperOS</a> - HyperOS_Android14_1.0.1.0</li>
+    </ul>
+</section>
+<section id="guide" style="display:none;">
+    <h2>安装教程</h2>
+    <p>以下是安装ROM的一般步骤：</p>
+    <ol>
+        <li>准备工作：备份重要数据。</li>
+        <li>解锁 Bootloader。</li>
+        <li>安装 Twrp</li>
+        <li>下载ROM文件到手机。</li>
+        <li>使用Twrp刷入ROM。</li>
+        <li>完成刷机后，格式化Data，重新启动设备。</li>
+    </ol>
+    <p>有关更详细的步骤和注意事项，请查看我们的<a href="#">详细教程</a>。</p>
 </section>
 
 <section id="faq" style="display:none;">
     <h2>常见问题 (FAQ)</h2>
+    <h3>Q: 安装ROM后会丢失数据吗？</h3>
+    <p>A: 是的，刷ROM过程可能会清除数据。建议提前备份重要文件。</p>
+    <h3>Q: 安装ROM时红色报错无法安装system？</h3>
+    <p>A: 按照rom要求扩容system分区。</p>
     <h3>Q: 扩容是指扩容我的手机硬盘吗？</h3>
     <p>A: 不是的，只是扩容系统分区，它是非物理的以及可逆的。</p>
+
     <h3>Q: 如何扩容？</h3>
     <p>A: 酷安下载多系统工具箱，按照教程扩容即可。</p>
+
     <h3>Q: 如何刷入三分区包？</h3>
     <p>A: 解压后Twrp选择刷入镜像（Install image），分别刷入对应分区即可。</p>
 </section>
 
-<section id="join-qq-group" style="display:none;">
-    <h2>加入QQ群</h2>
-    <p>QQ群号：761180178，欢迎讨论刷机相关问题！</p>
+<section id="contributors" style="display:none;">
+    <h2>贡献者</h2>
+    <p>感谢以下开发者对本项目的贡献：</p>
+    <ul>
+        <li><a href="https://github.com/Dzyys" target="_blank">Dzyys</a> - 维护小米5与小米5sPlus</li>
+        <li><a href="http://www.coolapk.com/u/18618352" target="_blank">酷狗zhj</a> - 为开发提供技术支持</li>
+        <li><a href="http://www.coolapk.com/u/25505399" target="_blank">搞机的只因</a> - 维护小米Note2</li>
+        <li><a href="http://www.coolapk.com/u/22511061" target="_blank">雪之下雪乃Official</a> - 维护小米5、小米5s、小米Mix</li>
+        <li><a href="http://www.coolapk.com/u/28610647" target="_blank">某车神</a> - 维护小米5</li>
+        <li><a href="http://www.coolapk.com/u/29021846" target="_blank">Rlightz7iF</a> - 提供技术支持</li>
+        <li><a href="http://www.coolapk.com/u/23636813" target="_blank">孩子i</a> - 提供技术支持</li>
+        <li><a href="http://www.coolapk.com/u/28387175" target="_blank">孤单酱</a> - 绝对不是一点用也没有🤓</li>
+        <li>还有许多未提到的开发者，在此致以衷心的感谢</li>
+    </ul>
 </section>
-
 <section id="legal" style="display:none;">
     <h2>法律声明</h2>
-    <p>本项目提供的内容为知识产权所有，禁止未经许可转载。本项目及开发者对刷机后的设备问题概不负责。</p>
+    <p>欢迎访问MI8996 ROM项目。为保护我们的知识产权和确保用户权益，特此声明：</p>
+    <ol>
+        <li><strong>版权声明：</strong>本项目中的所有内容，包括但不限于ROM文件、文档、教程及相关资源，均为本项目或其授权方的知识产权。未经本项目许可，任何单位或个人不得以任何形式转载、复制、发布、修改或传播本项目的内容，违者将依法追究法律责任。</li>
+        <li><strong>免责条款：</strong>本项目提供的ROM文件和相关教程仅供参考，用户自行承担刷机过程中的所有风险。刷入ROM后如发生设备损坏、数据丢失或其他意外问题，本项目及其贡献者概不负责，用户应谨慎操作并备份重要数据。</li>
+    </ol>
+    <p>感谢您的理解与支持！</p>
+</section>
+
+<section id="join-qq-group" style="display:none;">
+    <h2>加入我们的QQ群</h2>
+    <p>为了更好地与其他刷机爱好者交流，您可以加入我们的QQ群，讨论相关问题、获取支持以及分享刷机经验。</p>
+    <p><strong>QQ群号：</strong>761180178</p>
+    <p>直接搜索群号进行加入</p>
+    <p>我们期待您的加入！</p>
 </section>
 </body>
 </html>
