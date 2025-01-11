@@ -104,20 +104,19 @@
         }
     </style>
     <script>
-        // JavaScript to show and hide sections
+        // JavaScript
         function showSection(sectionId) {
-            // Hide all sections
+            // Hide sections
             var sections = document.querySelectorAll('section');
             sections.forEach(function(section) {
                 section.style.display = 'none';
             });
 
-            // Show the selected section
+            // Show selected section
             var selectedSection = document.getElementById(sectionId);
             selectedSection.style.display = 'block';
         }
 
-        // Initial page load: show the home section
         window.onload = function() {
             showSection('home');
         };
@@ -146,12 +145,11 @@
     <p>欢迎来到MI8996 ROM项目！本项目旨在提供针对所有搭载MSM8996芯片的小米手机的ROM，</p>
     <p><strong>支持机型：</strong>小米5、小米5s、小米5sPlus、小米Note2、小米Mix</p>
     <p>ROM请<strong>加入QQ群</strong>后下载，本网站下载渠道暂未开通</p>
-    <!-- 添加计时器 -->
     <div class="timer" id="timer"></div>
 </section>
 
 <script>
-    // JavaScript for the timer
+    // JavaScript
     function updateTimer() {
         const startDate = new Date('2025-01-05T00:00:00'); // 起始日期
         const today = new Date();
